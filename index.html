@@ -355,10 +355,10 @@ Swal.fire({
 title: 'Editor Rumus (LaTeX)',
 html: `<div class="text-start small mb-2 text-muted">Pilih template cepat atau ketik format LaTeX secara manual:</div>
 <div class="d-flex flex-wrap gap-1 mb-3">
-<button class="btn btn-sm btn-outline-secondary" onclick="$('#swal-math-input').val($('#swal-math-input').val() + '\\\\frac{a}{b}')">Pecahan (a/b)</button>
+<button class="btn btn-sm btn-outline-secondary" onclick="$('#swal-math-input').val($('#swal-math-input').val() + '\\frac{a}{b}')">Pecahan (a/b)</button>
 <button class="btn btn-sm btn-outline-secondary" onclick="$('#swal-math-input').val($('#swal-math-input').val() + 'x^{2}')">Pangkat</button>
-<button class="btn btn-sm btn-outline-secondary" onclick="$('#swal-math-input').val($('#swal-math-input').val() + '\\\\sqrt{x}')">Akar</button>
-<button class="btn btn-sm btn-outline-secondary" onclick="$('#swal-math-input').val($('#swal-math-input').val() + '\\\\sum')">Sigma</button>
+<button class="btn btn-sm btn-outline-secondary" onclick="$('#swal-math-input').val($('#swal-math-input').val() + '\\sqrt{x}')">Akar</button>
+<button class="btn btn-sm btn-outline-secondary" onclick="$('#swal-math-input').val($('#swal-math-input').val() + '\\sum')">Sigma</button>
 </div>
 <textarea id="swal-math-input" class="form-control font-monospace" rows="3" placeholder="Ketik rumus LaTeX di sini..."></textarea>`,
 showCancelButton: true,
@@ -449,21 +449,25 @@ $('#sidebar').removeClass('active'); $('#sidebar-overlay').removeClass('active')
 });
 }
 function initDash() {
-$('#view-auth').hide();
-$('#view-dashboard').removeClass('hidden');
-$('#u-name-disp').text(user.Nama);
-const role = String(user.Role || '').trim().toLowerCase();
-$('#user-role-disp').text(role.toUpperCase());
-$('.components').addClass('hidden');
+  $('#view-auth').hide();
+  $('#view-dashboard').removeClass('hidden');
+  $('#u-name-disp').text(user.Nama);
+  const role = String(user.Role || '').trim().toLowerCase();
+  $('#user-role-disp').text(role.toUpperCase());
+  $('.components').addClass('hidden');
 
-if(role === 'siswa') {
-$('#menu-siswa').removeClass('hidden'); loadPage('siswa-home');
-} else if(role === 'guru') {
-$('#menu-guru').removeClass('hidden'); loadPage('admin-home');
-} else if(role === 'admin') {
-options: opsRaw,
-$('#menu-admin').removeClass('hidden'); loadPage('admin-home');
-} else { Swal.fire('Akses Ditolak', 'Role akun Anda tidak dikenali sistem.', 'error'); }
+  if(role === 'siswa') {
+    $('#menu-siswa').removeClass('hidden'); 
+    loadPage('siswa-home');
+  } else if(role === 'guru') {
+    $('#menu-guru').removeClass('hidden'); 
+    loadPage('admin-home');
+  } else if(role === 'admin') {
+    $('#menu-admin').removeClass('hidden'); 
+    loadPage('admin-home');
+  } else { 
+    Swal.fire('Akses Ditolak', 'Role akun Anda tidak dikenali sistem.', 'error'); 
+  }
 }
 function appRefresh() {
 const activeLink = $('.nav-link.active');
